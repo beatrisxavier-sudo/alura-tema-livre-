@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroTech - Agricultura de Precisão</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroTech - Agricultura de Precisão</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">🌾 AgroTech</div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#tecnologias">Tecnologias</a></li>
-                <li><a href="#jogo">Mini-Jogo</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="header">
+    <div class="logo">🌾 AgroTech</div>
+    <nav class="nav">
+      <a href="#inicio">Início</a>
+      <a href="#tecnologias">Tecnologias</a>
+      <a href="#jogo">Desafio</a>
+    </nav>
+  </header>
 
-    <section id="inicio" class="hero">
-        <div class="hero-text">
-            <h1>O Futuro do Campo é Agora</h1>
-            <p>Conheça como a Agricultura de Precisão, Drones e Inteligência Artificial estão revolucionando a produção de alimentos.</p>
-        </div>
-    </section>
+  <section id="inicio" class="hero">
+    <h1>O Futuro do Campo é Agora</h1>
+    <p>Conheça como a Agricultura de Precisão, Drones e Inteligência Artificial estão revolucionando a produção de alimentos.</p>
+  </section>
 
-    <section id="tecnologias" class="cards-container">
-        <h2>Tecnologias no Campo</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>🛰️ Sensores e Satélites</h3>
-                <p>Mapeamento e monitoramento da saúde das lavouras em tempo real, identificando estresse hídrico e pragas.</p>
-            </div>
-            <div class="card">
-                <h3>🚁 Drones Agrícolas</h3>
-                <p>Pulverização localizada, economia de insumos e inspeção detalhada do solo de forma rápida e eficiente.</p>
-            </div>
-            <div class="card">
-                <h3>🤖 Automação e IA</h3>
-                <p>Tratores autônomos e softwares de predição que reduzem desperdícios e aumentam a produtividade.</p>
-            </div>
-        </div>
-    </section>
+  <section id="tecnologias" class="container">
+    <h2>Tecnologias no Campo</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="icon">🛰️</div>
+        <h3>Sensores e Satélites</h3>
+        <p>Mapeamento e monitoramento da saúde das lavouras em tempo real, identificando estresse hídrico e pragas.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🚁</div>
+        <h3>Drones Agrícolas</h3>
+        <p>Pulverização localizada, economia de insumos e inspeção detalhada do solo de forma rápida e eficiente.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Automação e IA</h3>
+        <p>Tratores autônomos e softwares de predição que reduzem desperdícios e aumentam a produtividade.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="jogo" class="game-section">
-        <h2>🎮 Desafio AgroTech</h2>
-        <p>Aprenda a tomar as decisões corretas na fazenda digital!</p>
-        
-        <div class="quiz-container">
-            <div id="quiz-question">Carregando pergunta...</div>
+  <section id="jogo" class="container quiz-container">
+    <h2>🎮 Desafio AgroTech</h2>
+    <p>Aprenda a tomar as decisões corretas na fazenda digital!</p>
+    
+    <div id="quiz-box" class="quiz-box">
+      <p id="pergunta">Carregando pergunta...</p>
+      <div id="opcoes" class="opcoes-grid"></div>
+      <p id="resultado" class="resultado"></p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
