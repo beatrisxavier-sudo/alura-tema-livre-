@@ -1,4 +1,4 @@
-/* CSS Reset & Variáveis */
+/* Variáveis e Estilos Globais */
 :root {
     --primary: #2e7d32;
     --primary-dark: #1b5e20;
@@ -145,7 +145,6 @@ body {
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
 .hero h1 {
@@ -167,7 +166,7 @@ body {
     justify-content: center;
 }
 
-/* Seções Gerais */
+/* Seções */
 .section {
     padding: 5rem 8%;
 }
@@ -188,7 +187,7 @@ body {
     color: var(--text-muted);
 }
 
-/* Grid de Tecnologias */
+/* Grid de Cards */
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -229,7 +228,6 @@ body {
     font-weight: 700;
     padding: 0.3rem 0.8rem;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .card-body {
@@ -247,7 +245,7 @@ body {
     color: var(--text-muted);
 }
 
-/* Seção do Jogo */
+/* Simulador / Jogo */
 .game-section {
     background: #112214;
     color: var(--white);
