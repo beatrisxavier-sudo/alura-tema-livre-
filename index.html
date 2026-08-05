@@ -1,59 +1,93 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroTech - Agricultura de Precisão</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<section id="simulador" class="section-game">
+  <h2>🌾 Simulador: Gestão da Safra</h2>
+  <p>Tome as decisões certas para garantir uma colheita rentável e sustentável!</p>
 
-  <header class="header">
-    <div class="logo">🌾 AgroTech</div>
-    <nav class="nav">
-      <a href="#inicio">Início</a>
-      <a href="#tecnologias">Tecnologias</a>
-      <a href="#jogo">Desafio</a>
-    </nav>
-  </header>
-
-  <section id="inicio" class="hero">
-    <h1>O Futuro do Campo é Agora</h1>
-    <p>Conheça como a Agricultura de Precisão, Drones e Inteligência Artificial estão revolucionando a produção de alimentos.</p>
-  </section>
-
-  <section id="tecnologias" class="container">
-    <h2>Tecnologias no Campo</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="icon">🛰️</div>
-        <h3>Sensores e Satélites</h3>
-        <p>Mapeamento e monitoramento da saúde das lavouras em tempo real, identificando estresse hídrico e pragas.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🚁</div>
-        <h3>Drones Agrícolas</h3>
-        <p>Pulverização localizada, economia de insumos e inspeção detalhada do solo de forma rápida e eficiente.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🤖</div>
-        <h3>Automação e IA</h3>
-        <p>Tratores autônomos e softwares de predição que reduzem desperdícios e aumentam a produtividade.</p>
-      </div>
+  <div class="game-card">
+    <div class="game-status">
+      <p>📅 Dia: <span id="game-day">1</span>/5</p>
+      <p>🌱 Saúde da Plantação: <span id="game-health">100%</span></p>
+      <p>💧 Umidade do Solo: <span id="game-moisture">60%</span></p>
+      <p>💰 Orcamento: R$ <span id="game-budget">1000</span></p>
     </div>
-  </section>
 
-  <section id="jogo" class="container quiz-container">
-    <h2>🎮 Desafio AgroTech</h2>
-    <p>Aprenda a tomar as decisões corretas na fazenda digital!</p>
-    
-    <div id="quiz-box" class="quiz-box">
-      <p id="pergunta">Carregando pergunta...</p>
-      <div id="opcoes" class="opcoes-grid"></div>
-      <p id="resultado" class="resultado"></p>
+    <div class="game-event" id="game-event-text">
+      O clima está ensolarado. O que deseja fazer hoje?
     </div>
-  </section>
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <div class="game-actions">
+      <button onclick="playTurn('irrigar')">💧 Irrigar (R$ 100)</button>
+      <button onclick="playTurn('insumos')">🛡️ Aplicar Proteção (R$ 150)</button>
+      <button onclick="playTurn('esperar')">☀️ Aguardar Sol</button>
+    </div>
+
+    <p id="game-result-msg" class="result-msg"></p>
+  </div>
+</section>
+
+<script>
+let gameState = { day: 1, health: 100, moisture: 60, budget: 1000 };
+
+function playTurn(action) {
+  if (gameState.day > 5) return;
+
+  const msgEl = document.getElementById('game-result-msg');
+  let eventMsg = "";
+
+  // Ações do jogador
+  if (action === 'irrigar') {
+    if (gameState.budget < 100) return alert("Fundos insuficientes!");
+    gameState.budget -= 100;
+    gameState.moisture = Math.min(100, gameState.moisture + 30);
+    eventMsg = "Você irrigou o campo. A umidade do solo subiu!";
+  } else if (action === 'insumos') {
+    if (gameState.budget < 150) return alert("Fundos insuficientes!");
+    gameState.budget -= 150;
+    gameState.health = Math.min(100, gameState.health + 15);
+    eventMsg = "Você usou defensivos biológicos. A lavoura está protegida!";
+  } else {
+    gameState.moisture -= 20;
+    eventMsg = "Dia sem intervenção. A água evaporou levemente.";
+  }
+
+  // Evento climático aleatório
+  const randomEvent = Math.random();
+  if (randomEvent < 0.3) {
+    gameState.moisture -= 15;
+    eventMsg += " ☀️ Onda de calor atingiu a região!";
+  } else if (randomEvent < 0.5) {
+    gameState.health -= 10;
+    eventMsg += " 🐛 Pragas detectadas na região!";
+  }
+
+  // Atualiza estados
+  gameState.day++;
+
+  if (gameState.moisture < 20) gameState.health -= 25;
+  if (gameState.health <= 0) gameState.health = 0;
+
+  // Atualizar tela
+  document.getElementById('game-day').innerText = gameState.day;
+  document.getElementById('game-health').innerText = gameState.health + "%";
+  document.getElementById('game-moisture').innerText = gameState.moisture + "%";
+  document.getElementById('game-budget').innerText = gameState.budget;
+  document.getElementById('game-event-text').innerText = eventMsg;
+
+  if (gameState.day > 5 || gameState.health <= 0) {
+    finishGame();
+  }
+}
+
+function finishGame() {
+  const msgEl = document.getElementById('game-result-msg');
+  if (gameState.health >= 70) {
+    msgEl.innerText = "🏆 Excelente colheita! Você maximizou a produtividade sustentável!";
+    msgEl.className = "result-msg success";
+  } else if (gameState.health > 0) {
+    msgEl.innerText = "⚠️ Colheita moderada. É possível otimizar o uso de recursos.";
+    msgEl.className = "result-msg warning";
+  } else {
+    msgEl.innerText = "❌ A lavoura não sobreviveu. Tente equilibrar melhor a irrigação e o manejo!";
+    msgEl.className = "result-msg danger";
+  }
+}
+</script>
