@@ -1,93 +1,200 @@
-<section id="simulador" class="section-game">
-  <h2>🌾 Simulador: Gestão da Safra</h2>
-  <p>Tome as decisões certas para garantir uma colheita rentável e sustentável!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroTech - O Futuro da Agricultura</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
 
-  <div class="game-card">
-    <div class="game-status">
-      <p>📅 Dia: <span id="game-day">1</span>/5</p>
-      <p>🌱 Saúde da Plantação: <span id="game-health">100%</span></p>
-      <p>💧 Umidade do Solo: <span id="game-moisture">60%</span></p>
-      <p>💰 Orcamento: R$ <span id="game-budget">1000</span></p>
-    </div>
+    <!-- Cabeçalho / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">🌾</span> AgroTech
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio">Início</a>
+            <a href="#tecnologias">Tecnologias</a>
+            <a href="#simulador">Simulador</a>
+            <a href="#impacto">Impacto</a>
+        </nav>
+        <a href="#simulador" class="btn-primary-small">Jogar Agora</a>
+    </header>
 
-    <div class="game-event" id="game-event-text">
-      O clima está ensolarado. O que deseja fazer hoje?
-    </div>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">Inovação do Campo à Mesa</span>
+            <h1>O Futuro da Agricultura É Agora</h1>
+            <p>Conectando sustentabilidade, inteligência artificial e alta produtividade para alimentar as próximas gerações.</p>
+            <div class="hero-buttons">
+                <a href="#simulador" class="btn-primary">🎮 Testar Simulador</a>
+                <a href="#tecnologias" class="btn-secondary">Explorar Tecnologias</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="game-actions">
-      <button onclick="playTurn('irrigar')">💧 Irrigar (R$ 100)</button>
-      <button onclick="playTurn('insumos')">🛡️ Aplicar Proteção (R$ 150)</button>
-      <button onclick="playTurn('esperar')">☀️ Aguardar Sol</button>
-    </div>
+    <!-- Seção de Tecnologias -->
+    <section id="tecnologias" class="section">
+        <div class="section-header">
+            <h2>Tecnologias de Vanguarda</h2>
+            <p>Como a transformação digital está aumentando o rendimento e reduzindo desperdícios no agronegócio.</p>
+        </div>
 
-    <p id="game-result-msg" class="result-msg"></p>
-  </div>
-</section>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80" alt="Drone agrícola">
+                    <span class="tech-tag">Monitoramento</span>
+                </div>
+                <div class="card-body">
+                    <h3>Drones e Mapeamento Aéreo</h3>
+                    <p>Mapeamento multiespectral de lavouras em tempo real, identificando pragas, falhas de plantio e estresse hídrico com milímetros de precisão.</p>
+                </div>
+            </div>
 
-<script>
-let gameState = { day: 1, health: 100, moisture: 60, budget: 1000 };
+            <div class="tech-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=600&q=80" alt="Trator autônomo">
+                    <span class="tech-tag">Automação</span>
+                </div>
+                <div class="card-body">
+                    <h3>Maquinário Autônomo & IA</h3>
+                    <p>Tratores e colheitadeiras com piloto automático via GPS, reduzindo sobreposições de passagem e otimizando o consumo de combustível.</p>
+                </div>
+            </div>
 
-function playTurn(action) {
-  if (gameState.day > 5) return;
+            <div class="tech-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80" alt="Sensores IoT no campo">
+                    <span class="tech-tag">IoT & Sensores</span>
+                </div>
+                <div class="card-body">
+                    <h3>Estações Meteorológicas IoT</h3>
+                    <p>Sensores instalados no solo que medem umidade, pH e temperatura de forma contínua, enviando alertas em tempo real ao produtor.</p>
+                </div>
+            </div>
 
-  const msgEl = document.getElementById('game-result-msg');
-  let eventMsg = "";
+            <div class="tech-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Irrigação inteligente">
+                    <span class="tech-tag">Sustentabilidade</span>
+                </div>
+                <div class="card-body">
+                    <h3>Irrigação Inteligente</h3>
+                    <p>Sistemas automatizados de fertirrigação que economizam até 40% de água acionando pivôs somente quando a planta realmente precisa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  // Ações do jogador
-  if (action === 'irrigar') {
-    if (gameState.budget < 100) return alert("Fundos insuficientes!");
-    gameState.budget -= 100;
-    gameState.moisture = Math.min(100, gameState.moisture + 30);
-    eventMsg = "Você irrigou o campo. A umidade do solo subiu!";
-  } else if (action === 'insumos') {
-    if (gameState.budget < 150) return alert("Fundos insuficientes!");
-    gameState.budget -= 150;
-    gameState.health = Math.min(100, gameState.health + 15);
-    eventMsg = "Você usou defensivos biológicos. A lavoura está protegida!";
-  } else {
-    gameState.moisture -= 20;
-    eventMsg = "Dia sem intervenção. A água evaporou levemente.";
-  }
+    <!-- Seção do Jogo / Simulador -->
+    <section id="simulador" class="section game-section">
+        <div class="section-header light">
+            <h2>🎮 Simulador de Safra Inteligente</h2>
+            <p>Assuma o controle de uma fazenda digital! Tome decisões de irrigação e manejo para garantir a maior colheita possível.</p>
+        </div>
 
-  // Evento climático aleatório
-  const randomEvent = Math.random();
-  if (randomEvent < 0.3) {
-    gameState.moisture -= 15;
-    eventMsg += " ☀️ Onda de calor atingiu a região!";
-  } else if (randomEvent < 0.5) {
-    gameState.health -= 10;
-    eventMsg += " 🐛 Pragas detectadas na região!";
-  }
+        <div class="game-wrapper">
+            <div class="game-dashboard">
+                <div class="stat-card">
+                    <span class="stat-icon">📅</span>
+                    <div>
+                        <small>Dia</small>
+                        <strong id="game-day">1 / 5</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🌱</span>
+                    <div>
+                        <small>Saúde da Lavoura</small>
+                        <strong id="game-health">100%</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">💧</span>
+                    <div>
+                        <small>Umidade do Solo</small>
+                        <strong id="game-moisture">60%</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">💰</span>
+                    <div>
+                        <small>Caixa Disponível</small>
+                        <strong id="game-budget">R$ 1.000</strong>
+                    </div>
+                </div>
+            </div>
 
-  // Atualiza estados
-  gameState.day++;
+            <div class="game-screen">
+                <div class="event-box" id="event-box">
+                    <p id="game-event-text">☀️ O dia começou ensolarado na sua propriedade. As plantas precisam de cuidados. Qual é o seu plano de ação?</p>
+                </div>
 
-  if (gameState.moisture < 20) gameState.health -= 25;
-  if (gameState.health <= 0) gameState.health = 0;
+                <div class="game-actions" id="action-buttons">
+                    <button class="btn-action" onclick="playTurn('irrigar')">
+                        <span class="action-icon">💧</span>
+                        <span>Irrigar Lavoura</span>
+                        <small>Custo: R$ 100</small>
+                    </button>
+                    <button class="btn-action" onclick="playTurn('insumos')">
+                        <span class="action-icon">🛡️</span>
+                        <span>Proteção Biológica</span>
+                        <small>Custo: R$ 150</small>
+                    </button>
+                    <button class="btn-action" onclick="playTurn('esperar')">
+                        <span class="action-icon">☀️</span>
+                        <span>Aguardar Sol</span>
+                        <small>Custo: R$ 0</small>
+                    </button>
+                </div>
 
-  // Atualizar tela
-  document.getElementById('game-day').innerText = gameState.day;
-  document.getElementById('game-health').innerText = gameState.health + "%";
-  document.getElementById('game-moisture').innerText = gameState.moisture + "%";
-  document.getElementById('game-budget').innerText = gameState.budget;
-  document.getElementById('game-event-text').innerText = eventMsg;
+                <div id="game-result-screen" class="game-result hidden">
+                    <h3 id="result-title">Resultado da Safra</h3>
+                    <p id="result-desc"></p>
+                    <button class="btn-primary" onclick="resetGame()">🔄 Jogar Novamente</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  if (gameState.day > 5 || gameState.health <= 0) {
-    finishGame();
-  }
-}
+    <!-- Métricas / Impacto -->
+    <section id="impacto" class="section stats-section">
+        <div class="section-header">
+            <h2>O Impacto do AgroTech</h2>
+            <p>Resultados comprovados da tecnologia na agricultura sustentável moderna.</p>
+        </div>
 
-function finishGame() {
-  const msgEl = document.getElementById('game-result-msg');
-  if (gameState.health >= 70) {
-    msgEl.innerText = "🏆 Excelente colheita! Você maximizou a produtividade sustentável!";
-    msgEl.className = "result-msg success";
-  } else if (gameState.health > 0) {
-    msgEl.innerText = "⚠️ Colheita moderada. É possível otimizar o uso de recursos.";
-    msgEl.className = "result-msg warning";
-  } else {
-    msgEl.innerText = "❌ A lavoura não sobreviveu. Tente equilibrar melhor a irrigação e o manejo!";
-    msgEl.className = "result-msg danger";
-  }
-}
-</script>
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <h3>-35%</h3>
+                <p>Redução no uso de defensivos químicos com aplicação localizada.</p>
+            </div>
+            <div class="metric-item">
+                <h3>+25%</h3>
+                <p>Aumento da produtividade média por hectare.</p>
+            </div>
+            <div class="metric-item">
+                <h3>-40%</h3>
+                <p>Economia de água com pivôs inteligentes de irrigação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>🌾 <strong>AgroTech</strong> - Projeto desenvolvido para transformar a gestão do campo.</p>
+            <p class="copyright">© 2026 AgroTech. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
