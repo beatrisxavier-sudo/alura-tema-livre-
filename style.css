@@ -1,28 +1,420 @@
-<section id="tecnologias" class="tech-grid">
-  <div class="tech-card">
-    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80" alt="Drone agrícola sobrevoando plantação" class="card-img" />
-    <div class="card-body">
-      <span class="tag">Monitoramento</span>
-      <h3>Drones e Mapeamento Aéreo</h3>
-      <p>Pulverização cirúrgica e inspeção em tempo real com câmeras multiespectrais.</p>
-    </div>
-  </div>
+/* CSS Reset & Variáveis */
+:root {
+    --primary: #2e7d32;
+    --primary-dark: #1b5e20;
+    --primary-light: #e8f5e9;
+    --accent: #f57c00;
+    --bg-light: #f8faf8;
+    --text-dark: #1a251c;
+    --text-muted: #5c6b5e;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --border-radius: 16px;
+}
 
-  <div class="tech-card">
-    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=600&q=80" alt="Trator autônomo e tecnologia de campo" class="card-img" />
-    <div class="card-body">
-      <span class="tag">Automação</span>
-      <h3>Maquinário Autônomo & IA</h3>
-      <p>Tratores guiados por GPS e inteligência artificial para otimização de plantio.</p>
-    </div>
-  </div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
 
-  <div class="tech-card">
-    <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80" alt="Estufa inteligente e sensores de solo" class="card-img" />
-    <div class="card-body">
-      <span class="tag">IoT</span>
-      <h3>Estações Meteorológicas & IoT</h3>
-      <p>Sensores que medem pH, umidade e nutrientes diretamente nas raízes.</p>
-    </div>
-  </div>
-</section>
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Botões */
+.btn-primary-small {
+    background: var(--primary);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+
+.btn-primary-small:hover {
+    background: var(--primary-dark);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--primary-dark);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-light);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 85vh;
+    background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    margin-top: 60px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 35, 18, 0.6) 0%, rgba(15, 35, 18, 0.8) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    color: var(--white);
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 1.2rem 0;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Seções Gerais */
+.section {
+    padding: 5rem 8%;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 3.5rem auto;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.8rem;
+}
+
+.section-header p {
+    color: var(--text-muted);
+}
+
+/* Grid de Tecnologias */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.tech-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 180px;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tech-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--white);
+    color: var(--primary-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-dark);
+}
+
+.card-body p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+/* Seção do Jogo */
+.game-section {
+    background: #112214;
+    color: var(--white);
+    border-radius: 24px;
+    margin: 2rem 5%;
+}
+
+.section-header.light h2 {
+    color: #81c784;
+}
+
+.section-header.light p {
+    color: #a5d6a7;
+}
+
+.game-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.game-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-icon {
+    font-size: 1.8rem;
+}
+
+.stat-card small {
+    display: block;
+    color: #a5d6a7;
+    font-size: 0.8rem;
+}
+
+.stat-card strong {
+    font-size: 1.1rem;
+}
+
+.game-screen {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 16px;
+}
+
+.event-box {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.game-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.btn-action {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-action:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+}
+
+.action-icon {
+    font-size: 1.5rem;
+}
+
+.btn-action small {
+    color: #a5d6a7;
+    font-size: 0.75rem;
+}
+
+.game-result {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.game-result h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #81c784;
+}
+
+.game-result p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Métricas */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.metric-item {
+    background: var(--white);
+    padding: 2.5rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.metric-item h3 {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.metric-item p {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Rodapé */
+.footer {
+    background: var(--primary-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 4rem;
+}
+
+.copyright {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-buttons { flex-direction: column; }
+    .section { padding: 3rem 5%; }
+}
